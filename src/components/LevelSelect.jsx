@@ -4,7 +4,10 @@ export const LevelSelect = ({ onSelectLevel, onBack }) => {
   const levels = Object.entries(LEVEL_CONFIG);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-4">
+    <div style={{
+      background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #ec4899 100%)',
+      minHeight: '100vh'
+    }} className="p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 animate-bounce-in">
@@ -17,8 +20,13 @@ export const LevelSelect = ({ onSelectLevel, onBack }) => {
           {levels.map(([key, config], index) => (
             <div
               key={key}
-              className="animate-bounce-in bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-6 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105 shadow-lg"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+              className="animate-bounce-in backdrop-blur-lg rounded-2xl p-6 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105 shadow-lg"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                animationDelay: `${index * 0.1}s`,
+                backdropFilter: 'blur(10px)'
+              }}
               onClick={() => onSelectLevel(key)}
             >
               <div className="flex items-center justify-between mb-4">
@@ -33,7 +41,7 @@ export const LevelSelect = ({ onSelectLevel, onBack }) => {
                 <p>📈 Difficulty: {'🔥'.repeat(config.difficulty)}</p>
               </div>
 
-              <button className="mt-4 w-full bg-white text-purple-600 font-bold py-2 rounded-lg hover:bg-opacity-90 transition-all">
+              <button style={{ backgroundColor: 'white', color: '#9333ea' }} className="mt-4 w-full text-purple-600 font-bold py-2 rounded-lg hover:bg-opacity-90 transition-all">
                 Play →
               </button>
             </div>
@@ -44,7 +52,8 @@ export const LevelSelect = ({ onSelectLevel, onBack }) => {
         <div className="flex justify-center">
           <button
             onClick={onBack}
-            className="btn-glow px-8 py-3 bg-white text-purple-600 rounded-full font-bold text-lg hover:bg-opacity-90 shadow-lg"
+            style={{ backgroundColor: 'white', color: '#9333ea' }}
+            className="btn-glow px-8 py-3 rounded-full font-bold text-lg hover:bg-opacity-90 shadow-lg"
           >
             ← Back to Menu
           </button>

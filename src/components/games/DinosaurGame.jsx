@@ -131,13 +131,17 @@ export const DinosaurGame = ({ level, onBack }) => {
 
   if (!gameActive) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-400 to-pink-600 flex items-center justify-center p-4">
+      <div style={{
+        background: 'linear-gradient(135deg, #ef4444 0%, #ec4899 100%)',
+        minHeight: '100vh'
+      }} className="flex items-center justify-center p-4">
         <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-6 animate-bounce-in">
           <h2 className="text-4xl font-bold text-red-600">Game Over!</h2>
           <p className="text-2xl font-bold text-gray-700">Score: {gameStateRef.current.score}</p>
           <button
             onClick={() => window.location.reload()}
-            className="w-full py-3 bg-green-500 text-white rounded-xl font-bold text-lg hover:bg-green-600"
+            style={{ backgroundColor: '#10b981', color: 'white' }}
+            className="w-full py-3 rounded-xl font-bold text-lg hover:opacity-90"
           >
             🔄 Play Again
           </button>
@@ -153,7 +157,10 @@ export const DinosaurGame = ({ level, onBack }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-300 to-orange-400 flex flex-col items-center justify-center p-4">
+    <div style={{
+      background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 100%)',
+      minHeight: '100vh'
+    }} className="flex flex-col items-center justify-center p-4">
       <div className="mb-4">
         <button onClick={onBack} className="btn-glow px-4 py-2 bg-white rounded-full font-bold">
           ← Back

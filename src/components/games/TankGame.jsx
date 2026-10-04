@@ -94,7 +94,10 @@ export const TankGame = ({ level, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-400 to-teal-500 flex flex-col items-center justify-center p-4">
+    <div style={{
+      background: 'linear-gradient(135deg, #10b981 0%, #14b8a6 50%, #06b6d4 100%)',
+      minHeight: '100vh'
+    }} className="flex flex-col items-center justify-center p-4">
       <div className="mb-4">
         <button onClick={onBack} className="btn-glow px-4 py-2 bg-white rounded-full font-bold">
           ← Back
@@ -110,7 +113,7 @@ export const TankGame = ({ level, onBack }) => {
         className="border-4 border-white rounded-xl shadow-lg mb-6"
       />
 
-      <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-6 w-full max-w-md">
+      <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }} className="backdrop-blur-lg rounded-2xl p-6 w-full max-w-md">
         <p className="text-white text-center text-lg mb-2">Score: {score}</p>
         <input
           ref={inputRef}

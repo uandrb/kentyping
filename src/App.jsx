@@ -86,14 +86,18 @@ function App() {
       )}
 
       {currentScreen === 'game-select' && selectedLevel && (
-        <div className="min-h-screen bg-gradient-to-br from-green-400 via-cyan-400 to-blue-500 p-4">
+        <div style={{
+          background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%)',
+          minHeight: '100vh'
+        }} className="p-4">
           <div className="max-w-4xl mx-auto">
             <button
               onClick={() => {
                 setCurrentScreen('level-select');
                 setSelectedLevel(null);
               }}
-              className="btn-glow px-4 py-2 bg-white text-green-600 rounded-full font-bold mb-8"
+              style={{ backgroundColor: 'white', color: '#10b981' }}
+              className="btn-glow px-4 py-2 rounded-full font-bold mb-8"
             >
               ← Back
             </button>
@@ -104,7 +108,8 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div
                 onClick={() => handleSelectGame('dinosaur')}
-                className="animate-bounce-in bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                className="animate-bounce-in backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
               >
                 <p className="text-5xl mb-4">🦖</p>
                 <h2 className="text-2xl font-bold text-white mb-2">Dinosaur Jump</h2>
@@ -113,8 +118,8 @@ function App() {
 
               <div
                 onClick={() => handleSelectGame('pacman')}
-                className="animate-bounce-in bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
-                style={{ animationDelay: '0.1s' }}
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)', animationDelay: '0.1s' }}
+                className="animate-bounce-in backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
               >
                 <p className="text-5xl mb-4">👾</p>
                 <h2 className="text-2xl font-bold text-white mb-2">Pacman Letters</h2>
@@ -123,8 +128,8 @@ function App() {
 
               <div
                 onClick={() => handleSelectGame('tank')}
-                className="animate-bounce-in bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
-                style={{ animationDelay: '0.2s' }}
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)', animationDelay: '0.2s' }}
+                className="animate-bounce-in backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
               >
                 <p className="text-5xl mb-4">🎖️</p>
                 <h2 className="text-2xl font-bold text-white mb-2">Tank Battle</h2>

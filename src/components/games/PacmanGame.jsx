@@ -112,7 +112,10 @@ export const PacmanGame = ({ level, onBack }) => {
   }, [gameActive, words]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-300 to-yellow-500 flex flex-col items-center justify-center p-4">
+    <div style={{
+      background: 'linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%)',
+      minHeight: '100vh'
+    }} className="flex flex-col items-center justify-center p-4">
       <div className="mb-4">
         <button onClick={onBack} className="btn-glow px-4 py-2 bg-white rounded-full font-bold">
           ← Back

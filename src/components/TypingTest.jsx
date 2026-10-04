@@ -19,20 +19,23 @@ export const TypingTest = ({ level, onBack }) => {
 
   if (isFinished) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-400 via-cyan-400 to-blue-500 flex items-center justify-center p-4">
+      <div style={{
+        background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%)',
+        minHeight: '100vh'
+      }} className="flex items-center justify-center p-4">
         <div className="bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl animate-bounce-in text-center space-y-6">
           <h2 className="text-4xl font-bold text-green-600">🎉 Great Job!</h2>
           
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-gradient-to-br from-green-400 to-green-600 p-4 rounded-xl text-white">
+            <div style={{ background: 'linear-gradient(135deg, #10b981, #047857)' }} className="p-4 rounded-xl text-white">
               <p className="text-sm">Accuracy</p>
               <p className="text-3xl font-bold">{accuracy}%</p>
             </div>
-            <div className="bg-gradient-to-br from-blue-400 to-blue-600 p-4 rounded-xl text-white">
+            <div style={{ background: 'linear-gradient(135deg, #3b82f6, #1e40af)' }} className="p-4 rounded-xl text-white">
               <p className="text-sm">WPM</p>
               <p className="text-3xl font-bold">{averageWPM}</p>
             </div>
-            <div className="bg-gradient-to-br from-purple-400 to-purple-600 p-4 rounded-xl text-white">
+            <div style={{ background: 'linear-gradient(135deg, #a855f7, #6b21a8)' }} className="p-4 rounded-xl text-white">
               <p className="text-sm">Words</p>
               <p className="text-3xl font-bold">{correctCount}/{total}</p>
             </div>
@@ -41,7 +44,8 @@ export const TypingTest = ({ level, onBack }) => {
           <div className="space-y-2">
             <button
               onClick={reset}
-              className="w-full btn-glow py-3 bg-gradient-to-r from-green-400 to-green-600 text-white rounded-xl font-bold text-lg hover:shadow-lg"
+              style={{ background: 'linear-gradient(to right, #10b981, #047857)', color: 'white' }}
+              className="w-full btn-glow py-3 rounded-xl font-bold text-lg hover:shadow-lg"
             >
               🔄 Try Again
             </button>
@@ -58,7 +62,10 @@ export const TypingTest = ({ level, onBack }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 p-4">
+    <div style={{
+      background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #a855f7 100%)',
+      minHeight: '100vh'
+    }} className="p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
@@ -83,7 +90,7 @@ export const TypingTest = ({ level, onBack }) => {
         </div>
 
         {/* Main Content */}
-        <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl p-12 text-center space-y-8 animate-bounce-in">
+        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }} className="backdrop-blur-lg rounded-3xl p-12 text-center space-y-8 animate-bounce-in">
           {/* Current Word */}
           <div className="space-y-4">
             <p className="text-white text-lg">Type this word:</p>

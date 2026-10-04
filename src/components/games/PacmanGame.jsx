@@ -29,21 +29,34 @@ export const PacmanGame = ({ level, onBack }) => {
       ctx.beginPath();
       ctx.arc(pac.x, pac.y, pac.width / 2, mouthAngle, 2 * Math.PI - mouthAngle, false);
       ctx.fill();
+      ctx.strokeStyle = '#FFA500';
+      ctx.lineWidth = 2;
+      ctx.stroke();
 
+      // Eye
       ctx.fillStyle = '#000';
+      ctx.beginPath();
       ctx.arc(pac.x + 8, pac.y - 5, 3, 0, Math.PI * 2);
       ctx.fill();
     };
 
     const drawLetters = () => {
-      gameState.letters.forEach((letter, index) => {
-        ctx.fillStyle = '#FF69B4';
+      gameState.letters.forEach((letter) => {
+        // Letter box with gradient effect
+        ctx.fillStyle = '#EC4899';
         ctx.fillRect(letter.x, letter.y, letter.width, letter.height);
+        ctx.fillStyle = '#BE185D';
+        ctx.fillRect(letter.x, letter.y, letter.width, 3);
+        
+        // Glow effect
+        ctx.strokeStyle = 'rgba(236, 72, 153, 0.5)';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(letter.x - 1, letter.y - 1, letter.width + 2, letter.height + 2);
         
         ctx.fillStyle = '#FFF';
-        ctx.font = 'bold 16px Arial';
+        ctx.font = 'bold 18px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText(letter.text, letter.x + letter.width / 2, letter.y + letter.height / 2 + 5);
+        ctx.fillText(letter.text, letter.x + letter.width / 2, letter.y + letter.height / 2 + 6);
       });
     };
 
@@ -55,8 +68,17 @@ export const PacmanGame = ({ level, onBack }) => {
     };
 
     const gameLoop = () => {
-      ctx.fillStyle = '#000033';
+      // Background with stars
+      ctx.fillStyle = '#001a4d';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw stars
+      ctx.fillStyle = '#FFF';
+      for (let i = 0; i < 50; i++) {
+        const x = (i * 73) % canvas.width;
+        const y = (i * 89) % canvas.height;
+        ctx.fillRect(x, y, 2, 2);
+      }
 
       gameState.mouthAngle += 0.1;
       drawPacman();
@@ -79,17 +101,18 @@ export const PacmanGame = ({ level, onBack }) => {
         gameState.letters.push({
           x: Math.random() * canvas.width,
           y: Math.random() * (canvas.height - 50),
-          width: 30,
-          height: 30,
+          width: 35,
+          height: 35,
           text: words[wordIndex][0],
           vx: (Math.random() - 0.5) * 4,
           vy: (Math.random() - 0.5) * 4,
         });
       }
 
-      ctx.fillStyle = '#FFF';
-      ctx.font = 'bold 24px Arial';
-      ctx.fillText(`Score: ${gameState.score}`, canvas.width - 120, 40);
+      // Score display
+      ctx.fillStyle = '#00FF00';
+      ctx.font = 'bold 28px Arial';
+      ctx.fillText(`Score: ${gameState.score}`, canvas.width - 150, 40);
 
       if (gameActive) {
         animationId = requestAnimationFrame(gameLoop);
@@ -113,21 +136,32 @@ export const PacmanGame = ({ level, onBack }) => {
 
   return (
     <div style={{
-      background: 'linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%)',
+      background: 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%)',
       minHeight: '100vh'
     }} className="flex flex-col items-center justify-center p-4">
-      <div className="mb-4">
-        <button onClick={onBack} className="btn-glow px-4 py-2 bg-white rounded-full font-bold">
+      {/* Top Bar */}
+      <div className="w-full max-w-3xl mb-6 flex justify-between items-center">
+        <button onClick={onBack} className="px-6 py-3 bg-white text-yellow-600 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all">
           ← Back
         </button>
+        <div className="text-4xl font-bold text-white text-shadow-lg">👾 Pacman Letters</div>
+        <div style={{ background: 'linear-gradient(135deg, #fbbf24, #f59e0b)' }} className="px-6 py-3 rounded-full text-white font-bold text-xl shadow-lg">
+          Score: {score}
+        </div>
       </div>
-      <h1 className="text-4xl font-bold text-white text-shadow-lg mb-4">👾 Pacman Letter Game!</h1>
-      <p className="text-white text-lg mb-4">Move your mouse to eat the letters! 🍒</p>
+
+      {/* Instructions */}
+      <div className="mb-4 text-center">
+        <p className="text-xl text-white font-bold text-shadow">Move your mouse to eat the letters! 🍒</p>
+        <p className="text-lg text-white text-shadow">Collect as many as you can! 💛</p>
+      </div>
+
+      {/* Canvas */}
       <canvas
         ref={canvasRef}
-        width={800}
-        height={400}
-        className="border-4 border-white rounded-xl shadow-lg bg-gray-900"
+        width={900}
+        height={500}
+        className="border-8 border-white rounded-3xl shadow-2xl bg-gray-900"
       />
     </div>
   );

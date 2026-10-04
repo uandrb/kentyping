@@ -87,53 +87,97 @@ function App() {
 
       {currentScreen === 'game-select' && selectedLevel && (
         <div style={{
-          background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%)',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
           minHeight: '100vh'
         }} className="p-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <button
               onClick={() => {
                 setCurrentScreen('level-select');
                 setSelectedLevel(null);
               }}
-              style={{ backgroundColor: 'white', color: '#10b981' }}
-              className="btn-glow px-4 py-2 rounded-full font-bold mb-8"
+              style={{ backgroundColor: 'white', color: '#667eea' }}
+              className="btn-glow px-6 py-3 rounded-full font-bold text-lg mb-8 hover:shadow-lg transform hover:scale-105 transition-all"
             >
-              ← Back
+              ← Back to Levels
             </button>
+
             <div className="text-center mb-12 animate-bounce-in">
-              <h1 className="text-5xl font-bold text-white text-shadow-lg mb-2">🎮 Choose Your Game</h1>
+              <h1 className="text-6xl font-bold text-white text-shadow-lg mb-4">🎮 Choose Your Game</h1>
+              <p className="text-2xl text-white text-shadow">Pick a game and have fun! 🎉</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              {/* Dinosaur Game */}
               <div
                 onClick={() => handleSelectGame('dinosaur')}
-                style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
-                className="animate-bounce-in backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
+                className="animate-bounce-in transform hover:scale-110 transition-all cursor-pointer"
+                style={{ animationDelay: '0' }}
               >
-                <p className="text-5xl mb-4">🦖</p>
-                <h2 className="text-2xl font-bold text-white mb-2">Dinosaur Jump</h2>
-                <p className="text-white">Avoid obstacles by jumping!</p>
+                <div style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  backdropFilter: 'blur(10px)',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05))'
+                }} className="rounded-3xl p-8 hover:shadow-2xl transition-all min-h-96 flex flex-col items-center justify-center border-4 border-white border-opacity-30">
+                  <div className="text-8xl mb-6 animate-float">🦖</div>
+                  <h2 className="text-3xl font-bold text-white text-shadow mb-4">Dinosaur Jump</h2>
+                  <p className="text-white text-center text-lg mb-6">
+                    🚀 Jump over obstacles!
+                    <br />
+                    ⌨️ Press SPACE
+                  </p>
+                  <div className="bg-white text-purple-600 px-6 py-3 rounded-full font-bold text-lg mt-auto">
+                    Play Now →
+                  </div>
+                </div>
               </div>
 
+              {/* Pacman Game */}
               <div
                 onClick={() => handleSelectGame('pacman')}
-                style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)', animationDelay: '0.1s' }}
-                className="animate-bounce-in backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
+                className="animate-bounce-in transform hover:scale-110 transition-all cursor-pointer"
+                style={{ animationDelay: '0.1s' }}
               >
-                <p className="text-5xl mb-4">👾</p>
-                <h2 className="text-2xl font-bold text-white mb-2">Pacman Letters</h2>
-                <p className="text-white">Eat the falling letters!</p>
+                <div style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  backdropFilter: 'blur(10px)',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05))'
+                }} className="rounded-3xl p-8 hover:shadow-2xl transition-all min-h-96 flex flex-col items-center justify-center border-4 border-white border-opacity-30">
+                  <div className="text-8xl mb-6 animate-spin-slow">👾</div>
+                  <h2 className="text-3xl font-bold text-white text-shadow mb-4">Pacman Letters</h2>
+                  <p className="text-white text-center text-lg mb-6">
+                    🍒 Eat the letters!
+                    <br />
+                    🖱️ Move your mouse
+                  </p>
+                  <div className="bg-white text-yellow-600 px-6 py-3 rounded-full font-bold text-lg mt-auto">
+                    Play Now →
+                  </div>
+                </div>
               </div>
 
+              {/* Tank Game */}
               <div
                 onClick={() => handleSelectGame('tank')}
-                style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)', animationDelay: '0.2s' }}
-                className="animate-bounce-in backdrop-blur-lg rounded-2xl p-8 hover:bg-opacity-30 transition-all cursor-pointer transform hover:scale-105"
+                className="animate-bounce-in transform hover:scale-110 transition-all cursor-pointer"
+                style={{ animationDelay: '0.2s' }}
               >
-                <p className="text-5xl mb-4">🎖️</p>
-                <h2 className="text-2xl font-bold text-white mb-2">Tank Battle</h2>
-                <p className="text-white">Type words to destroy enemies!</p>
+                <div style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  backdropFilter: 'blur(10px)',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05))'
+                }} className="rounded-3xl p-8 hover:shadow-2xl transition-all min-h-96 flex flex-col items-center justify-center border-4 border-white border-opacity-30">
+                  <div className="text-8xl mb-6 animate-float">🎖️</div>
+                  <h2 className="text-3xl font-bold text-white text-shadow mb-4">Tank Battle</h2>
+                  <p className="text-white text-center text-lg mb-6">
+                    💣 Destroy enemies!
+                    <br />
+                    ⌨️ Type words
+                  </p>
+                  <div className="bg-white text-teal-600 px-6 py-3 rounded-full font-bold text-lg mt-auto">
+                    Play Now →
+                  </div>
+                </div>
               </div>
             </div>
           </div>
